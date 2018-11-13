@@ -20,6 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_weight="0"
                 android:adjustViewBounds="true"
@@ -232,14 +233,14 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/Quadro10"
+                android:id="@+id/Quadroa"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/shape" >
+                android:background="@drawable/shape">
 
                 <ImageView
-                    android:id="@+id/i10"
+                    android:id="@+id/ia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
@@ -248,14 +249,14 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/Quadro11"
+                android:id="@+id/Quadrob"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/shape" >
+                android:background="@drawable/shape">
 
                 <ImageView
-                    android:id="@+id/i11"
+                    android:id="@+id/ib"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
@@ -264,14 +265,14 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/Quadro12"
+                android:id="@+id/Quadroc"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/shape" >
+                android:background="@drawable/shape">
 
                 <ImageView
-                    android:id="@+id/i12"
+                    android:id="@+id/ic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"

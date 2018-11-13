@@ -3,6 +3,7 @@ package com.example.mirko.mergecastle;
 import android.app.Activity;
 import android.app.Application;
 import android.content.ClipData;
+import android.content.ComponentCallbacks2;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -34,13 +35,14 @@ public class MainActivity extends AppCompatActivity {
     ImageView i7;
     ImageView i8;
     ImageView i9;
-    ImageView i10;
-    ImageView i11;
-    ImageView i12;
+    ImageView ia;
+    ImageView ib;
+    ImageView ic;
     TextView clickCounterView;
     TextView logView;
     int click=0;
-    String log="";
+    String log1="";
+    String log2="";
     String longLog="";
 
     /** Called when the activity is first created. */
@@ -68,9 +70,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.i7).setOnTouchListener(new MyTouchListener());
         findViewById(R.id.i8).setOnTouchListener(new MyTouchListener());
         findViewById(R.id.i9).setOnTouchListener(new MyTouchListener());
-        findViewById(R.id.i10).setOnTouchListener(new MyTouchListener());
-        findViewById(R.id.i11).setOnTouchListener(new MyTouchListener());
-        findViewById(R.id.i12).setOnTouchListener(new MyTouchListener());
+        findViewById(R.id.ia).setOnTouchListener(new MyTouchListener());
+        findViewById(R.id.ib).setOnTouchListener(new MyTouchListener());
+        findViewById(R.id.ic).setOnTouchListener(new MyTouchListener());
         findViewById(R.id.Quadro1).setOnDragListener(new MyDragListener());
         findViewById(R.id.Quadro2).setOnDragListener(new MyDragListener());
         findViewById(R.id.Quadro3).setOnDragListener(new MyDragListener());
@@ -80,9 +82,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.Quadro7).setOnDragListener(new MyDragListener());
         findViewById(R.id.Quadro8).setOnDragListener(new MyDragListener());
         findViewById(R.id.Quadro9).setOnDragListener(new MyDragListener());
-        findViewById(R.id.Quadro10).setOnDragListener(new MyDragListener());
-        findViewById(R.id.Quadro11).setOnDragListener(new MyDragListener());
-        findViewById(R.id.Quadro12).setOnDragListener(new MyDragListener());
+        findViewById(R.id.Quadroa).setOnDragListener(new MyDragListener());
+        findViewById(R.id.Quadrob).setOnDragListener(new MyDragListener());
+        findViewById(R.id.Quadroc).setOnDragListener(new MyDragListener());
 
         RelativeLayout Quadro1 = (RelativeLayout)findViewById(R.id.Quadro1);
 
@@ -95,9 +97,9 @@ public class MainActivity extends AppCompatActivity {
          i7 = (ImageView)findViewById(R.id.i7);
          i8 = (ImageView)findViewById(R.id.i8);
          i9 = (ImageView)findViewById(R.id.i9);
-         i10 = (ImageView)findViewById(R.id.i10);
-         i11 = (ImageView)findViewById(R.id.i11);
-         i12 = (ImageView)findViewById(R.id.i12);
+         ia = (ImageView)findViewById(R.id.ia);
+         ib = (ImageView)findViewById(R.id.ib);
+         ic = (ImageView)findViewById(R.id.ic);
 
         TagImage();
         GridBuilder(i1);
@@ -109,9 +111,9 @@ public class MainActivity extends AppCompatActivity {
         GridBuilder(i7);
         GridBuilder(i8);
         GridBuilder(i9);
-        GridBuilder(i10);
-        GridBuilder(i11);
-        GridBuilder(i12);
+        GridBuilder(ia);
+        GridBuilder(ib);
+        GridBuilder(ic);
 
 
 
@@ -121,16 +123,16 @@ public class MainActivity extends AppCompatActivity {
         ImageView clickBoardView = (ImageView)findViewById(R.id.clickBoardView);
         final TextView clickCounterView = (TextView)findViewById(R.id.clickCounterView);
 
-
-     /*   clickBoardView.setOnClickListener(new View.OnClickListener() {
+/*
+        clickBoardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
             click++;
                 clickCounterView.setText("click: " + click);
 
             }
-        });*/
-
+        });
+*/
 
         clickBoardView.setOnTouchListener(new OnTouchListener() {
             @Override
@@ -150,19 +152,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
     private void TagImage(){
-        i1.setTag(R.drawable.quadro);
-        i2.setTag(R.drawable.quadro);
-        i3.setTag(R.drawable.quadro);
-        i4.setTag(R.drawable.quadro);
-        i5.setTag(R.drawable.quadro);
-        i6.setTag(R.drawable.quadro);
-        i7.setTag(R.drawable.quadro);
-        i8.setTag(R.drawable.quadro);
-        i9.setTag(R.drawable.quadro);
-        i10.setTag(R.drawable.quadro);
-        i11.setTag(R.drawable.quadro);
-        i12.setTag(R.drawable.quadro);
+        i1.setTag(R.drawable.quadrovuoto);
+        i2.setTag(R.drawable.quadrovuoto);
+        i3.setTag(R.drawable.quadrovuoto);
+        i4.setTag(R.drawable.quadrovuoto);
+        i5.setTag(R.drawable.quadrovuoto);
+        i6.setTag(R.drawable.quadrovuoto);
+        i7.setTag(R.drawable.quadrovuoto);
+        i8.setTag(R.drawable.quadrovuoto);
+        i9.setTag(R.drawable.quadrovuoto);
+        ia.setTag(R.drawable.quadrovuoto);
+        ib.setTag(R.drawable.quadrovuoto);
+        ic.setTag(R.drawable.quadrovuoto);
     }
 
     private void GridBuilder(ImageView iv){
@@ -172,13 +176,17 @@ public class MainActivity extends AppCompatActivity {
 
         
         switch(integer) {
+            case R.drawable.quadrovuoto:
+                iv.setImageResource(R.drawable.quadrovuoto);
+                //logView.setText(integer);
+                break;
             case R.drawable.armaturaprova:
                 iv.setImageResource(R.drawable.armaturaprova);
-                logView.setText(integer);
+                //logView.setText(integer);
                 break;
             case R.drawable.provaarma:
                 iv.setImageResource(R.drawable.provaarma);
-                logView.setText(integer);
+                //logView.setText(integer);
                 break;
             default:
                 iv.setImageResource(R.drawable.quadro);
@@ -230,15 +238,15 @@ public class MainActivity extends AppCompatActivity {
             {
                 count = 9;
             }
-            if (i10.getTag().equals(R.drawable.quadro))
+            if (ia.getTag().equals(R.drawable.quadro))
             {
                 count = 10;
             }
-            if (i11.getTag().equals(R.drawable.quadro))
+            if (ib.getTag().equals(R.drawable.quadro))
             {
                 count = 11;
             }
-            if (i12.getTag().equals(R.drawable.quadro))
+            if (ic.getTag().equals(R.drawable.quadro))
             {
                 count = 12;
             }
@@ -295,18 +303,18 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 case 10:
                         // libero
-                        i10.setImageResource(R.drawable.provaarma);
-                        i10.setTag(R.drawable.provaarma);
+                        ia.setImageResource(R.drawable.provaarma);
+                        ia.setTag(R.drawable.provaarma);
                         break;
                 case 11:
                         // libero
-                        i11.setImageResource(R.drawable.provaarma);
-                        i11.setTag(R.drawable.provaarma);
+                        ib.setImageResource(R.drawable.provaarma);
+                        ib.setTag(R.drawable.provaarma);
                         break;
                 case 12:
                         // libero
-                        i12.setImageResource(R.drawable.provaarma);
-                        i12.setTag(R.drawable.provaarma);
+                        ic.setImageResource(R.drawable.provaarma);
+                        ic.setTag(R.drawable.provaarma);
                         break;
                     default:
                         break;
@@ -331,43 +339,56 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-//TODO capisci quale immagine si sta muovendo, in quale casella, e quali altre immagini contiene questa casella
+
     class MyDragListener implements OnDragListener {
         Drawable enterShape = getResources().getDrawable(R.drawable.shape_droptarget);
         Drawable normalShape = getResources().getDrawable(R.drawable.shape);
+        View viewS;
 
         @Override
         public boolean onDrag(View v, DragEvent event) {
             int action = event.getAction();
             switch (event.getAction()) {
                 case DragEvent.ACTION_DRAG_STARTED:
-                    View viewS = (View) event.getLocalState();
-                    log=" " + viewS;
-                    longLog=longLog + ImageTagIsolator(log);
-                    logView.setText(" " +longLog);
+                    viewS = (View) event.getLocalState();
+                    //log1=v.getResources().getResourceName(v.getId());
+                    //longLog=longLog + ImageTagIsolator(log);
+                    //logView.setText(" " +longLog);
                     // do nothing
                     break;
                 case DragEvent.ACTION_DRAG_ENTERED:
                     View viewEn = (View) event.getLocalState();
-                    log=" " + viewEn;
-                    longLog=longLog + ImageTagIsolator(log);
-                    logView.setText(" " +longLog);
+
+                    //log=" " + viewEn;
+                    //longLog=longLog + ImageTagIsolator(log);
+                    //logView.setText(" " +longLog);
                     v.setBackgroundDrawable(enterShape);
                     Log.wtf("Manager","ENTRA IN CASELLA " + v.getResources().getResourceName(v.getId()));
 
                     break;
                 case DragEvent.ACTION_DRAG_EXITED:
                     View viewEX = (View) event.getLocalState();
-                    log=" " + viewEX;
-                    longLog=longLog + ImageTagIsolator(log);
-                    logView.setText(" " +longLog);
+                    log1=v.getResources().getResourceName(v.getId());
+                    //log=" " + viewEX;
+                    //longLog=longLog + ImageTagIsolator(log);
+                    //logView.setText(" " +longLog);
                     v.setBackgroundDrawable(normalShape);
                     Log.wtf("Manager","ESCE DA CASELLA  " + v.getResources().getResourceName(v.getId()));
                     break;
                 case DragEvent.ACTION_DROP:
 
-                    RelativeLayout Quadro1 = (RelativeLayout)findViewById(R.id.Quadro1);
+                    log2=v.getResources().getResourceName(v.getId());
 
+                    View view = (View) event.getLocalState();
+                    ViewGroup owner = (ViewGroup) view.getParent();
+                    owner.removeView(view);
+                    //LinearLayout container = (LinearLayout) v;
+                    view.setVisibility(View.INVISIBLE);
+                    RelativeLayout dropTarget = (RelativeLayout) v;
+                    dropTarget.addView(view);
+                    ImageView dropped = (ImageView) view;
+
+ /*
                     //handle the dragged view being dropped over a target view
                     View view = (View) event.getLocalState();
                     //stop displaying the view where it was before it was dragged
@@ -376,20 +397,36 @@ public class MainActivity extends AppCompatActivity {
                     RelativeLayout dropTarget = (RelativeLayout) v;
                     //view being dragged and dropped
                     ImageView dropped = (ImageView) view;
+                    */
 
                     Integer integer = (Integer) dropped.getTag();
                     integer = integer == null ? 0 : integer;
 
                     //update the text in the target view to reflect the data being dropped
 
-                    //TODO qui trovo i figli di Quadro1 , nella view v trovo il figlio che prendo.
-                    for(int i = 0; i < Quadro1.getChildCount(); i++) {
-                        View child = Quadro1.getChildAt(i);
+
+
+                    for(int i = 0; i < dropTarget.getChildCount(); i++) {
+                        View child = dropTarget.getChildAt(i);
                         // your processing...
 
+                        String imagePartenza ="";
+                        String imageArrivo="";
+                        Log.wtf("View 1", view.toString());
                         Log.wtf("Manager","DROP           " +child.toString() ); // v.getResources().getResourceName(v.getId()) + String.valueOf(v = ((ViewGroup)owner).getChildAt(0)));
+                        imagePartenza=ImageTagIsolator(view.toString());
+                        imageArrivo=ImageTagIsolator(child.toString());
+                        Log.wtf("Partenza", imagePartenza);
+                        Log.wtf("Arrivo",imageArrivo ); // v.getResources().getResourceName(v.getId()) + String.valueOf(v = ((ViewGroup)owner).getChildAt(0)));
+
+
+
+                        //TODO non arriva il layout giusto log1 e log2, quando si preme su una cella si crea una sovrapposizione perchè vede che l'id è lo stesso
+                        GestoreMovimenti(dropped, (ImageView) child, log1, log2);
+                        log1="";
+
                     }
-                    i1.setImageResource(integer);
+                    //i1.setImageResource(integer);
                     //make it bold to highlight the fact that an item has been dropped
 
 
@@ -422,8 +459,19 @@ public class MainActivity extends AppCompatActivity {
 
     private String ImageTagIsolator(String log){
         if (log.length() !=0) {
-            log=log.substring(log.length() - 3);
+            log=log.substring(log.length()-3);
             log=log.substring(0,2);
+            logView.setText(" "+ log);
+        } else {
+            // whatever is appropriate in this case
+            throw new IllegalArgumentException("word has less than 3 characters!");
+        }
+        return log;
+    }
+
+    private String LayoutTagIsolator(String log){
+        if (log.length() !=0) {
+            log=log.substring(log.length()-7);
             logView.setText(" "+ log);
         } else {
             // whatever is appropriate in this case
@@ -446,5 +494,84 @@ public class MainActivity extends AppCompatActivity {
         return desc;
     }
 
+    public void GestoreMovimenti(ImageView dropped, ImageView dropTarget, String layoutPartenza, String layoutArrivo){
+        Integer drop = (Integer) dropped.getTag();
+        drop = drop == null ? 0 : drop;
+        Integer dropT = (Integer) dropTarget.getTag();
+        dropT = dropT == null ? 0 : dropT;
+
+        Log.wtf("+++++++++++++++++++++++++++--------------------------------", drop.toString() +" "+ dropT.toString()+" "+ layoutPartenza+ " "+layoutArrivo);
+
+        if(dropT.equals(drop) && !(layoutArrivo.equals(layoutPartenza)) ){
+            dropped.setTag(R.drawable.quadrovuoto);
+            dropTarget.setTag(R.drawable.armaturaprova);
+            GridBuilder(dropped);
+            GridBuilder(dropTarget);
+            dropTarget.setVisibility(View.VISIBLE);
+            Log.wtf("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++", dropped.toString() +" "+ layoutPartenza+ " "+layoutArrivo);
+        }
+    }
+
+    /**
+     * Release memory when the UI becomes hidden or when system resources become low.
+     * @param level the memory-related event that was raised.
+     */
+    public void onTrimMemory(int level) {
+
+        // Determine which lifecycle or system event was raised.
+        switch (level) {
+
+            case ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN:
+
+                /*
+                   Release any UI objects that currently hold memory.
+
+                   The user interface has moved to the background.
+                */
+
+                break;
+
+            case ComponentCallbacks2.TRIM_MEMORY_RUNNING_MODERATE:
+            case ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW:
+            case ComponentCallbacks2.TRIM_MEMORY_RUNNING_CRITICAL:
+
+                /*
+                   Release any memory that your app doesn't need to run.
+
+                   The device is running low on memory while the app is running.
+                   The event raised indicates the severity of the memory-related event.
+                   If the event is TRIM_MEMORY_RUNNING_CRITICAL, then the system will
+                   begin killing background processes.
+                */
+
+                break;
+
+            case ComponentCallbacks2.TRIM_MEMORY_BACKGROUND:
+            case ComponentCallbacks2.TRIM_MEMORY_MODERATE:
+            case ComponentCallbacks2.TRIM_MEMORY_COMPLETE:
+
+                /*
+                   Release as much memory as the process can.
+
+                   The app is on the LRU list and the system is running low on memory.
+                   The event raised indicates where the app sits within the LRU list.
+                   If the event is TRIM_MEMORY_COMPLETE, the process will be one of
+                   the first to be terminated.
+                */
+
+                break;
+
+            default:
+                /*
+                  Release any non-critical data structures.
+
+                  The app received an unrecognized memory level value
+                  from the system. Treat this as a generic low-memory message.
+                */
+                break;
+        }
+    }
 }
+
+
 
